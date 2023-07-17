@@ -17,13 +17,13 @@
 # - From the command line:
 #     $ docker pull docker.io/vaultwarden/web-vault:v2023.5.0
 #     $ docker image inspect --format "{{.RepoDigests}}" docker.io/vaultwarden/web-vault:v2023.5.0
-#     [docker.io/vaultwarden/web-vault@sha256:e5b5e99d132d50dc73176afb65f41cf3b834fb06bfa1d621ac16c705c3f10085]
+#     [docker.io/qbarbe/web-vault@sha256:36c65d5ada92a2237713713e7b745cad517d29b09624aa1fa47af46e78f00b2a]
 #
 # - Conversely, to get the tag name from the digest:
-#     $ docker image inspect --format "{{.RepoTags}}" docker.io/vaultwarden/web-vault@sha256:e5b5e99d132d50dc73176afb65f41cf3b834fb06bfa1d621ac16c705c3f10085
+#     $ docker image inspect --format "{{.RepoTags}}" docker.io/qbarbe/web-vault@sha256:36c65d5ada92a2237713713e7b745cad517d29b09624aa1fa47af46e78f00b2a
 #     [docker.io/vaultwarden/web-vault:v2023.5.0]
 #
-FROM docker.io/vaultwarden/web-vault@sha256:e5b5e99d132d50dc73176afb65f41cf3b834fb06bfa1d621ac16c705c3f10085 as vault
+FROM docker.io/qbarbe/web-vault@sha256:36c65d5ada92a2237713713e7b745cad517d29b09624aa1fa47af46e78f00b2a as vault
 
 ########################## BUILD IMAGE  ##########################
 FROM docker.io/blackdex/rust-musl:aarch64-musl-stable-1.70.0 as build

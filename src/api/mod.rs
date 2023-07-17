@@ -27,7 +27,6 @@ pub use crate::api::{
         push_cipher_update, push_folder_update, push_logout, push_send_update, push_user_update, register_push_device,
         unregister_push_device,
     },
-    web::catchers as web_catchers,
     web::routes as web_routes,
     web::static_files,
 };
