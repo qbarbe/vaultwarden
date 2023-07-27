@@ -434,6 +434,7 @@ impl UserOrganization {
             "UserId": self.user_uuid,
             "Name": user.name,
             "Email": user.email,
+            "ExternalId": user.external_id,
             "Groups": groups,
             "Collections": collections,
 
@@ -441,7 +442,7 @@ impl UserOrganization {
             "Type": self.atype,
             "AccessAll": self.access_all,
             "TwoFactorEnabled": twofactor_enabled,
-            "ResetPasswordEnrolled":self.reset_password_key.is_some(),
+            "ResetPasswordEnrolled": self.reset_password_key.is_some(),
 
             "Object": "organizationUserUserDetails",
         })
@@ -804,7 +805,7 @@ impl OrganizationApiKey {
                 let value = OrganizationApiKeyDb::to_db(self);
                 diesel::insert_into(organization_api_key::table)
                     .values(&value)
-                    .on_conflict(organization_api_key::uuid)
+                    .on_conflict((organization_api_key::uuid, organization_api_key::org_uuid))
                     .do_update()
                     .set(&value)
                     .execute(conn)
