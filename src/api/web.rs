@@ -27,14 +27,6 @@ pub fn routes() -> Vec<Route> {
     routes
 }
 
-pub fn catchers() -> Vec<Catcher> {
-    if CONFIG.web_vault_enabled() {
-        catchers![not_found]
-    } else {
-        catchers![]
-    }
-}
-
 #[catch(404)]
 fn not_found() -> ApiResult<Html<String>> {
     // Return the page
