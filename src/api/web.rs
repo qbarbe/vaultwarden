@@ -1,10 +1,10 @@
 use std::path::{Path, PathBuf};
 
-use rocket::{fs::NamedFile, http::ContentType, response::content::RawHtml as Html, serde::json::Json, Route};
+use rocket::{fs::NamedFile, http::ContentType, serde::json::Json, Route};
 use serde_json::Value;
 
 use crate::{
-    api::{core::now, ApiResult, EmptyResult},
+    api::{core::now, EmptyResult},
     auth::decode_file_download,
     error::Error,
     util::{Cached, SafeString},
@@ -25,16 +25,6 @@ pub fn routes() -> Vec<Route> {
     }
 
     routes
-}
-
-#[catch(404)]
-fn not_found() -> ApiResult<Html<String>> {
-    // Return the page
-    let json = json!({
-        "urlpath": CONFIG.domain_path()
-    });
-    let text = CONFIG.render_template("404", &json)?;
-    Ok(Html(text))
 }
 
 #[get("/")]
