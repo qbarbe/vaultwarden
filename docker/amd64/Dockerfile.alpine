@@ -17,13 +17,13 @@
 # - From the command line:
 #     $ docker pull docker.io/qbarbe/web-vault:v2023.7.1
 #     $ docker image inspect --format "{{.RepoDigests}}" docker.io/qbarbe/web-vault:v2023.7.1
-#     [docker.io/qbarbe/web-vault@sha256:f5683888cd164c86c151b18f5240287f612ab8e3d60e341e94beaf1b17bcd3f2]
+#     [docker.io/qbarbe/web-vault@sha256:76dda0024c882230d5dcdcf6f6d748b0fa190271f796f75302dc97d83595998f]
 #
 # - Conversely, to get the tag name from the digest:
-#     $ docker image inspect --format "{{.RepoTags}}" docker.io/qbarbe/web-vault@sha256:f5683888cd164c86c151b18f5240287f612ab8e3d60e341e94beaf1b17bcd3f2
+#     $ docker image inspect --format "{{.RepoTags}}" docker.io/qbarbe/web-vault@sha256:76dda0024c882230d5dcdcf6f6d748b0fa190271f796f75302dc97d83595998f
 #     [docker.io/qbarbe/web-vault:v2023.7.1]
 #
-FROM docker.io/qbarbe/web-vault@sha256:f5683888cd164c86c151b18f5240287f612ab8e3d60e341e94beaf1b17bcd3f2 as vault
+FROM docker.io/qbarbe/web-vault@sha256:76dda0024c882230d5dcdcf6f6d748b0fa190271f796f75302dc97d83595998f as vault
 
 ########################## BUILD IMAGE  ##########################
 FROM docker.io/blackdex/rust-musl:x86_64-musl-stable-1.71.1-openssl3 as build
