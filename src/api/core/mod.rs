@@ -221,7 +221,8 @@ fn config() -> Json<Value> {
         "gitHash": option_env!("GIT_REV"),
         "server": {
           "name": "Vaultwarden",
-          "url": "https://github.com/dani-garcia/vaultwarden"
+          "url": "https://github.com/qbarbe/vaultwarden",
+          "version": crate::VERSION
         },
         "settings": {
             "disableUserRegistration": CONFIG.is_signup_disabled()
