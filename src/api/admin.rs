@@ -598,7 +598,7 @@ async fn get_json_api<T: DeserializeOwned>(url: &str) -> Result<T, Error> {
 async fn has_http_access() -> bool {
     let http_access = get_reqwest_client();
 
-    match http_access.head("https://github.com/dani-garcia/vaultwarden").send().await {
+    match http_access.head("https://github.com/qbarbe/vaultwarden").send().await {
         Ok(r) => r.status().is_success(),
         _ => false,
     }
@@ -608,13 +608,11 @@ use cached::proc_macro::cached;
 /// Cache this function to prevent API call rate limit. Github only allows 60 requests per hour, and we use 3 here already.
 /// It will cache this function for 300 seconds (5 minutes) which should prevent the exhaustion of the rate limit.
 #[cached(time = 300, sync_writes = true)]
-async fn get_release_info(has_http_access: bool, running_within_docker: bool) -> (String, String, String) {
+async fn get_release_info(has_http_access: bool, running_within_container: bool) -> (String, String, String) {
     // If the HTTP Check failed, do not even attempt to check for new versions since we were not able to connect with github.com anyway.
     if has_http_access {
         (
-            match get_json_api::<GitRelease>("https://api.github.com/repos/qbarbe/vaultwarden/releases/latest")
-                .await
-            {
+            match get_json_api::<GitRelease>("https://api.github.com/repos/qbarbe/vaultwarden/releases/latest").await {
                 Ok(r) => r.tag_name,
                 _ => "-".to_string(),
             },
@@ -625,15 +623,13 @@ async fn get_release_info(has_http_access: bool, running_within_docker: bool) ->
                 }
                 _ => "-".to_string(),
             },
-            // Do not fetch the web-vault version when running within Docker.
+            // Do not fetch the web-vault version when running within a container.
             // The web-vault version is embedded within the container it self, and should not be updated manually
-            if running_within_docker {
+            if running_within_container {
                 "-".to_string()
             } else {
-                match get_json_api::<GitRelease>(
-                    "https://api.github.com/repos/qbarbe/bw_web_builds/releases/latest",
-                )
-                .await
+                match get_json_api::<GitRelease>("https://api.github.com/repos/qbarbe/bw_web_builds/releases/latest")
+                    .await
                 {
                     Ok(r) => r.tag_name.trim_start_matches('v').to_string(),
                     _ => "-".to_string(),
