@@ -643,9 +643,7 @@ async fn get_release_info(has_http_access: bool) -> (String, String, String) {
     // If the HTTP Check failed, do not even attempt to check for new versions since we were not able to connect with github.com anyway.
     if has_http_access {
         (
-            match get_json_api::<GitRelease>("https://api.github.com/repos/qbarbe/vaultwarden/releases/latest")
-                .await
-            {
+            match get_json_api::<GitRelease>("https://api.github.com/repos/qbarbe/vaultwarden/releases/latest").await {
                 Ok(r) => r.tag_name,
                 _ => "-".to_string(),
             },
