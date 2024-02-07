@@ -30,7 +30,7 @@ jobs:
     runs-on: ubuntu-24.04
     timeout-minutes: 120
     needs: skip_check
-    if: ${{ needs.skip_check.outputs.should_skip != 'true' && github.repository == 'dani-garcia/vaultwarden' }}
+    if: ${{ needs.skip_check.outputs.should_skip != 'true' && github.repository == 'qbarbe/vaultwarden' }}
     # Start a local docker registry to extract the final Alpine static build binaries
     services:
       registry:
