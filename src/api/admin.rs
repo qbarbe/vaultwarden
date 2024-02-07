@@ -618,9 +618,7 @@ async fn get_release_info(has_http_access: bool, running_within_container: bool)
     // If the HTTP Check failed, do not even attempt to check for new versions since we were not able to connect with github.com anyway.
     if has_http_access {
         (
-            match get_json_api::<GitRelease>("https://api.github.com/repos/qbarbe/vaultwarden/releases/latest")
-                .await
-            {
+            match get_json_api::<GitRelease>("https://api.github.com/repos/qbarbe/vaultwarden/releases/latest").await {
                 Ok(r) => r.tag_name,
                 _ => "-".to_string(),
             },
@@ -636,10 +634,8 @@ async fn get_release_info(has_http_access: bool, running_within_container: bool)
             if running_within_container {
                 "-".to_string()
             } else {
-                match get_json_api::<GitRelease>(
-                    "https://api.github.com/repos/qbarbe/bw_web_builds/releases/latest",
-                )
-                .await
+                match get_json_api::<GitRelease>("https://api.github.com/repos/qbarbe/bw_web_builds/releases/latest")
+                    .await
                 {
                     Ok(r) => r.tag_name.trim_start_matches('v').to_string(),
                     _ => "-".to_string(),
