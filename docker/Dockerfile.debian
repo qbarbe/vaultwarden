@@ -18,15 +18,15 @@
 # - From https://hub.docker.com/r/vaultwarden/web-vault/tags,
 #   click the tag name to view the digest of the image it currently points to.
 # - From the command line:
-#     [docker.io/qbarbe/web-vault@sha256:27388f831dc7fd8154d368bda88feae806283896f553a5c9696f8f95dea721bc]
+#     [docker.io/qbarbe/web-vault@sha256:787e6c7039a6300e754a8fec17c238de31b94d00b0c4add300de1272a2fc796b]
 #     $ docker pull docker.io/vaultwarden/web-vault:v2024.5.1
 #     $ docker image inspect --format "{{.RepoDigests}}" docker.io/vaultwarden/web-vault:v2024.5.1
 #
 # - Conversely, to get the tag name from the digest:
-#     $ docker image inspect --format "{{.RepoTags}}" docker.io/qbarbe/web-vault@sha256:27388f831dc7fd8154d368bda88feae806283896f553a5c9696f8f95dea721bc
+#     $ docker image inspect --format "{{.RepoTags}}" docker.io/qbarbe/web-vault@sha256:787e6c7039a6300e754a8fec17c238de31b94d00b0c4add300de1272a2fc796b
 #     [docker.io/vaultwarden/web-vault:v2024.5.1]
 #
-FROM --platform=linux/amd64 docker.io/qbarbe/web-vault@sha256:27388f831dc7fd8154d368bda88feae806283896f553a5c9696f8f95dea721bc as vault
+FROM --platform=linux/amd64 docker.io/qbarbe/web-vault@sha256:787e6c7039a6300e754a8fec17c238de31b94d00b0c4add300de1272a2fc796b as vault
 
 ########################## Cross Compile Docker Helper Scripts ##########################
 ## We use the linux/amd64 no matter which Build Platform, since these are all bash scripts
