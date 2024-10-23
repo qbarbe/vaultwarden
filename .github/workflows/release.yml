@@ -21,6 +21,7 @@ jobs:
     permissions:
       actions: write
     runs-on: ubuntu-24.04
+    if: ${{ github.repository == 'qbarbe/vaultwarden' }}
     outputs:
       should_skip: ${{ steps.skip_check.outputs.should_skip }}
 
