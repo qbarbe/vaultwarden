@@ -1798,11 +1798,8 @@ where
     reg!("admin/organizations");
     reg!("admin/diagnostics");
 
-    reg!("404");
-
     reg!(@withfallback "scss/vaultwarden.scss");
     reg!("scss/user.vaultwarden.scss");
-
     // And then load user templates to overwrite the defaults
     // Use .hbs extension for the files
     // Templates get registered with their relative name
