@@ -4,7 +4,7 @@ use std::path::{Path, PathBuf};
 use rocket::{
     fs::NamedFile,
     http::ContentType,
-    response::{content::RawCss as Css, content::RawHtml as Html, Redirect},
+    response::{content::RawCss as Css, Redirect},
     serde::json::Json,
     Catcher, Route,
 };
