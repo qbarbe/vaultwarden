@@ -8,7 +8,7 @@ on:
 
     tags:
       # https://docs.github.com/en/actions/writing-workflows/workflow-syntax-for-github-actions#filter-pattern-cheat-sheet
-      - '[1-2].[0-9]+.[0-9]+'
+      - '*'
 
 jobs:
   # https://github.com/marketplace/actions/skip-duplicate-actions
@@ -216,32 +216,6 @@ jobs:
         run: |
           GET_DIGEST_SHA="$(jq -r '.["${{ matrix.base_image }}-multi"]."containerimage.digest"' <<< "${BAKE_METADATA}")"
           echo "DIGEST_SHA=${GET_DIGEST_SHA}" | tee -a "${GITHUB_ENV}"
-
-      # Attest container images
-      - name: Attest - docker.io - ${{ matrix.base_image }}
-        if: ${{ env.HAVE_DOCKERHUB_LOGIN == 'true' && steps.bake_vw.outputs.metadata != ''}}
-        uses: actions/attest-build-provenance@520d128f165991a6c774bcb264f323e3d70747f4 # v2.2.0
-        with:
-          subject-name: ${{ vars.DOCKERHUB_REPO }}
-          subject-digest: ${{ env.DIGEST_SHA }}
-          push-to-registry: true
-
-      - name: Attest - ghcr.io - ${{ matrix.base_image }}
-        if: ${{ env.HAVE_GHCR_LOGIN == 'true' && steps.bake_vw.outputs.metadata != ''}}
-        uses: actions/attest-build-provenance@520d128f165991a6c774bcb264f323e3d70747f4 # v2.2.0
-        with:
-          subject-name: ${{ vars.GHCR_REPO }}
-          subject-digest: ${{ env.DIGEST_SHA }}
-          push-to-registry: true
-
-      - name: Attest - quay.io - ${{ matrix.base_image }}
-        if: ${{ env.HAVE_QUAY_LOGIN == 'true' && steps.bake_vw.outputs.metadata != ''}}
-        uses: actions/attest-build-provenance@520d128f165991a6c774bcb264f323e3d70747f4 # v2.2.0
-        with:
-          subject-name: ${{ vars.QUAY_REPO }}
-          subject-digest: ${{ env.DIGEST_SHA }}
-          push-to-registry: true
-
 
       # Extract the Alpine binaries from the containers
       - name: Extract binaries
