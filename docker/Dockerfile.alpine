@@ -16,16 +16,16 @@
 # be changed to point to a malicious image.
 #
 # To verify the current digest for a given tag name:
-# - From https://hub.docker.com/r/vaultwarden/web-vault/tags,
+# - From https://hub.docker.com/r/qbarbe/web-vault/tags,
 #   click the tag name to view the digest of the image it currently points to.
 # - From the command line:
-#     $ docker pull docker.io/vaultwarden/web-vault:v2025.5.0
-#     $ docker image inspect --format "{{.RepoDigests}}" docker.io/vaultwarden/web-vault:v2025.5.0
+#     $ docker pull docker.io/qbarbe/web-vault:v2025.5.0
+#     $ docker image inspect --format "{{.RepoDigests}}" docker.io/qbarbe/web-vault:v2025.5.0
 #     [docker.io/qbarbe/web-vault@sha256:9eb426044d4187bed5866b3c1faf062e6cbd026f9a9af1e0e2f03f2aa05d572c]
 #
 # - Conversely, to get the tag name from the digest:
 #     $ docker image inspect --format "{{.RepoTags}}" docker.io/qbarbe/web-vault@sha256:9eb426044d4187bed5866b3c1faf062e6cbd026f9a9af1e0e2f03f2aa05d572c
-#     [docker.io/vaultwarden/web-vault:v2025.5.0]
+#     [docker.io/qbarbe/web-vault:v2025.5.0]
 #
 FROM --platform=linux/amd64 docker.io/qbarbe/web-vault@sha256:9eb426044d4187bed5866b3c1faf062e6cbd026f9a9af1e0e2f03f2aa05d572c AS vault
 
