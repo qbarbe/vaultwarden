@@ -632,8 +632,7 @@ async fn get_release_info(has_http_access: bool) -> (String, String, String) {
             },
             // Do not fetch the web-vault version when running within a container
             // The web-vault version is embedded within the container it self, and should not be updated manually
-            match get_json_api::<GitRelease>("https://api.github.com/repos/qbarbe/bw_web_builds/releases/latest")
-                .await
+            match get_json_api::<GitRelease>("https://api.github.com/repos/qbarbe/bw_web_builds/releases/latest").await
             {
                 Ok(r) => r.tag_name.trim_start_matches('v').to_string(),
                 _ => "-".to_string(),
