@@ -27,7 +27,7 @@
 #     $ docker image inspect --format "{{.RepoTags}}" docker.io/qbarbe/web-vault@sha256:9eb426044d4187bed5866b3c1faf062e6cbd026f9a9af1e0e2f03f2aa05d572c
 #     [docker.io/qbarbe/web-vault:v2025.7.0]
 #
-FROM --platform=linux/amd64 docker.io/qbarbe/web-vault@sha256:f5933d64e0e2b13e9c074348ebbc214936da3eb3368c07e908d35d2781cab81b AS vault
+FROM --platform=linux/amd64 docker.io/qbarbe/web-vault@sha256:e04a7dcf95a3a429342f95e3e347affd6a68bf5ab88a59b15f3515bde2323d58 AS vault
 
 ########################## ALPINE BUILD IMAGES ##########################
 ## NOTE: The Alpine Base Images do not support other platforms then linux/amd64 and linux/arm64
