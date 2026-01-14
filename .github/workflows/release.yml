@@ -12,7 +12,7 @@ on:
 
 concurrency:
   # Apply concurrency control only on the upstream repo
-  group: ${{ github.repository == 'dani-garcia/vaultwarden' && format('{0}-{1}', github.workflow, github.ref) || github.run_id }}
+  group: ${{ github.repository == 'qbarbe/vaultwarden' && format('{0}-{1}', github.workflow, github.ref) || github.run_id }}
   # Don't cancel other runs when creating a tag
   cancel-in-progress: ${{ github.ref_type == 'branch' }}
 
@@ -36,7 +36,7 @@ env:
 jobs:
   docker-build:
     name: Build Vaultwarden containers
-    if: ${{ github.repository == 'dani-garcia/vaultwarden' }}
+    if: ${{ github.repository == 'qbarbe/vaultwarden' }}
     permissions:
       packages: write # Needed to upload packages and artifacts
       contents: read
