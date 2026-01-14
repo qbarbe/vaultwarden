@@ -19,15 +19,15 @@
 # - From https://hub.docker.com/r/qbarbe/web-vault/tags,
 #   click the tag name to view the digest of the image it currently points to.
 # - From the command line:
-#     $ docker pull docker.io/qbarbe/web-vault:v2025.7.0
-#     $ docker image inspect --format "{{.RepoDigests}}" docker.io/qbarbe/web-vault:v2025.7.0
-#     [docker.io/qbarbe/web-vault@sha256:9eb426044d4187bed5866b3c1faf062e6cbd026f9a9af1e0e2f03f2aa05d572c]
+#     $ docker pull docker.io/qbarbe/web-vault:v2025.12.1
+#     $ docker image inspect --format "{{.RepoDigests}}" docker.io/qbarbe/web-vault:v2025.12.1
+#     [docker.io/qbarbe/web-vault@sha256:654d0df4021a3266b51d4bb7385ed0afc6b12e83661579978c05fee4624e09a0]
 #
 # - Conversely, to get the tag name from the digest:
-#     $ docker image inspect --format "{{.RepoTags}}" docker.io/qbarbe/web-vault@sha256:9eb426044d4187bed5866b3c1faf062e6cbd026f9a9af1e0e2f03f2aa05d572c
-#     [docker.io/qbarbe/web-vault:v2025.7.0]
+#     $ docker image inspect --format "{{.RepoTags}}" docker.io/qbarbe/web-vault@sha256:654d0df4021a3266b51d4bb7385ed0afc6b12e83661579978c05fee4624e09a0
+#     [docker.io/qbarbe/web-vault:v2025.12.1]
 #
-FROM --platform=linux/amd64 docker.io/qbarbe/web-vault@sha256:e04a7dcf95a3a429342f95e3e347affd6a68bf5ab88a59b15f3515bde2323d58 AS vault
+FROM --platform=linux/amd64 docker.io/qbarbe/web-vault@sha256:654d0df4021a3266b51d4bb7385ed0afc6b12e83661579978c05fee4624e09a0 AS vault
 
 ########################## ALPINE BUILD IMAGES ##########################
 ## NOTE: The Alpine Base Images do not support other platforms then linux/amd64 and linux/arm64
