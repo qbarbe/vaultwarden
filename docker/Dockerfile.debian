@@ -21,13 +21,13 @@
 # - From the command line:
 #     $ docker pull docker.io/qbarbe/web-vault:v2026.4.1
 #     $ docker image inspect --format "{{.RepoDigests}}" docker.io/qbarbe/web-vault:v2026.4.1
-#     [docker.io/qbarbe/web-vault@sha256:88084b8a0f7625052a48891da1181d5f88365e8ddeeff56eff0038f299e80477]
+#     [docker.io/qbarbe/web-vault@sha256:edb28793ff46d0c613cf464f3c7b4067daa2e2ddf8a1d79011128278d56973c9]
 #
 # - Conversely, to get the tag name from the digest:
-#     $ docker image inspect --format "{{.RepoTags}}" docker.io/qbarbe/web-vault@sha256:88084b8a0f7625052a48891da1181d5f88365e8ddeeff56eff0038f299e80477
+#     $ docker image inspect --format "{{.RepoTags}}" docker.io/qbarbe/web-vault@sha256:edb28793ff46d0c613cf464f3c7b4067daa2e2ddf8a1d79011128278d56973c9
 #     [docker.io/qbarbe/web-vault:v2026.4.1]
 #
-FROM --platform=linux/amd64 docker.io/qbarbe/web-vault@sha256:88084b8a0f7625052a48891da1181d5f88365e8ddeeff56eff0038f299e80477 AS vault
+FROM --platform=linux/amd64 docker.io/qbarbe/web-vault@sha256:edb28793ff46d0c613cf464f3c7b4067daa2e2ddf8a1d79011128278d56973c9 AS vault
 
 ########################## Cross Compile Docker Helper Scripts ##########################
 ## We use the linux/amd64 no matter which Build Platform, since these are all bash scripts
