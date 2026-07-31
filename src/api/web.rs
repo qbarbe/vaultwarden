@@ -7,13 +7,14 @@ use rocket::{
     Catcher, Route,
     fs::NamedFile,
     http::ContentType,
-    response::{content::RawCss as Css, Redirect},
+    response::{Redirect, content::RawCss as Css},
     serde::json::Json,
 };
 use serde_json::Value;
 
 use crate::{
-    api::{core::now, EmptyResult},
+    CONFIG,
+    api::{EmptyResult, core::now},
     auth::decode_file_download,
     crypto::sha256_hex,
     db::{
